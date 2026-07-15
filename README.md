@@ -24,6 +24,7 @@ accounts, no API keys) so the whole thing runs on your machine.
 - **ffmpeg** (includes `ffprobe`) — <https://ffmpeg.org/download.html>
 - **Google Chrome** or Chromium (renders the caption)
 - **Claude Code**
+- **`gdown`** — only if you feed it Google Drive links: `pip install gdown`
 
 **2. Get the code:**
 
@@ -70,12 +71,24 @@ Then open Claude Code and just say what you want — the skill drives the rest:
 (No strict layout? That's fine — point it at any folders/files and it'll ask
 which are the hooks and which is the core.)
 
-Claude will:
+**Working from a Google Sheet instead?** If your hooks/core live as **Drive
+links in a sheet** (often with a caption column), just give Claude the sheet:
 
-1. **Analyze** each clip (builds contact sheets, describes the footage + the core's payoff)
-2. **Write** one caption per hook, all funneling into that payoff, matched to your audience
-3. **Show you the captions** for a quick nod
-4. **Render** every hook × core into `outputs/`, and hand back the `captions.txt`
+```
+"produce hooks from this sheet: <google-sheet-link>, international"
+```
+
+It pulls the sheet as CSV, downloads the linked videos, and runs the same
+pipeline. The sheet and Drive files must be **link-shared** ("anyone with the
+link"), and Drive downloads want `gdown` (`pip install gdown`).
+
+Either way, Claude will:
+
+1. **Analyze** each clip (contact sheets, describes the footage + the core's payoff)
+2. **Get the captions** — use the ones in your sheet, or write them if there are none
+3. **QA them** — an independent reviewer flags off-theme lines, typos, and wrong-audience slang *before* rendering
+4. **Show you the captions** for a quick nod
+5. **Render** every hook × core into `outputs/`, and hand back the `captions.txt`
 
 You review the captions as text (cheap) before anything renders (expensive).
 

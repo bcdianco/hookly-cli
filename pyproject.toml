@@ -15,6 +15,7 @@ dependencies = []  # runtime uses only the standard library + system ffmpeg & Ch
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
+drive = ["gdown>=5"]  # reliable Google Drive downloads for Sheet/Drive input mode
 
 [project.scripts]
 hook-caption = "engine.__main__:main"
