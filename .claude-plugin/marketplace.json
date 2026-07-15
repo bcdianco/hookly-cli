@@ -1,0 +1,16 @@
+{
+  "name": "hookly-cli",
+  "owner": {
+    "name": "Bryan Christian Dianco"
+  },
+  "metadata": {
+    "description": "Techie Labs — short-form hook video production for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "hookly-cli",
+      "source": "./",
+      "description": "Analyze hooks + a core, write hook captions, and render captioned hook x core videos locally."
+    }
+  ]
+}

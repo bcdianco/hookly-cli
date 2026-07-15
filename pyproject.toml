@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hookly-cli"
+version = "0.1.0"
+description = "Batch-assemble hook+core short-form videos with a Snapchat-style caption. Local, deterministic, no AI."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Bryan Christian Dianco" }]
+keywords = ["video", "ffmpeg", "short-form", "captions", "hook-testing"]
+dependencies = []  # runtime uses only the standard library + system ffmpeg & Chrome
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+hook-caption = "engine.__main__:main"
+
+[tool.setuptools]
+packages = ["engine"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
